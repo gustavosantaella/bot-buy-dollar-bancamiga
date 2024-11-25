@@ -12,8 +12,10 @@ from os import environ
 my_secret_image = environ.get("BANK_SECRET_IMAGE") + environ.get("BANK_SECRET_IMAGE_SECOND_PART")
 
 def start():
- 
-    driver = webdriver.Chrome()
+    options = webdriver.ChromeOptions()
+    options.add_argument("--auto-open-devtools-for-tabs")
+    options.add_argument("--start-maximized")
+    driver = webdriver.Chrome(options=options)
     driver.get("https://online.bancamiga.com/?p=1")
     
     driver.implicitly_wait(10)
@@ -130,7 +132,7 @@ def bank_home(driver: webdriver.Chrome):
     sleep(1)
     
     menudeo_hasta_select = Select(driver.find_element(By.ID, "hasta"))
-    menudeo_hasta_select.select_by_value(environ.get("BANK_CASH"))
+    menudeo_hasta_select.select_by_value(environ.get("BANK_FOREIGN"))
     sleep(1)
     
     Select(driver.find_element(By.ID, "origen")).select_by_value(str(1))
