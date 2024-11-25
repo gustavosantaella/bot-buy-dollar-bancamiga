@@ -150,7 +150,7 @@ def buy(driver: webdriver.Chrome, attemps = 0):
     
     if swal_content(driver) == "Estimado cliente, en este momento no podemos procesar su operación. Por favor, intente más tarde".strip():
         swal_confirm(driver)
-        sleep(2)
+        sleep(10)
         print("Try again... Attemp:", attemps)
         buy(driver, attemps + 1)
     else:
