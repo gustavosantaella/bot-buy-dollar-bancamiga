@@ -80,8 +80,7 @@ def swal_confirm(driver: webdriver.Chrome):
     
 def swal_content(driver: webdriver.Chrome):
     text = driver.find_element(By.ID, 'swal2-content')
-    print(text.text.strip())
-    print(text.text.strip() == "Estimado cliente, en este momento no podemos procesar su operación. Por favor, intente más tarde".strip())
+    print("Swal content -> ",text.text.strip())
     return text.text.strip()
 
 def bank_home(driver: webdriver.Chrome):
